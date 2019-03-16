@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+
+  <body>
+    <h5 id="words">
+      Website DOCTYPE head title body versions tag element parameter content
+      Website Website Website lowercase uppercase attributes width height src -
+      source language href screen comment search hyperlink address area image
+      sound bold relative base Specifies default color size font Overrides
+      direction section blockquote clickable button section JavaScript graphics
+      table canvas column machine data delete Represent application external
+      footer frame label highlight mark measurement navigation sample client
+      drop-down resources important span strong style template multiline
+      variable container accept charset align private async asynchronously focus
+      classname visible coordinate preferences download form draggable hidden
+      label loop max method multiple validate mute abort unload blur error input
+      invalid paste history Storage resume pause wait placeholder pattern
+      readonly sandbox scope step target translate value type wrap Array Boolean
+      Date Global JSON Math Number Operators RegExp Statements String console
+      event geolocation children concat continue cookie enable count Transfer
+      detail join index protocol repeat remove return throw while switch case
+      fetch promise catch write null undefined instance background animation
+      Origin Visibility border Bottom Collapse clear cursor filter flex grow
+      flow Shrink float icon justify Orientation margin opacity order outline
+      overflow padding perspective position resize Decoration Indent Shadow
+    </h5>
+
+    <script>
+      var ele = document.getElementById("words");
+      var ori_str = ele.textContent;
+      var ori_array = ori_str.split(" ");
+      var words_array = [];
+      for (i = 0; i < ori_array.length; i++) {
+        if (ori_array[i].length > 2) {
+          if (words_array.indexOf(ori_array[i].toLowerCase()) == -1) {
+            words_array.push(ori_array[i].toLowerCase());
+          } else {
+            delete ori_array[i];
+            console.log(i);
+          }
+        } else {
+          delete ori_array[i];
+        }
+      }
+      words_array.sort();
+      ori_array.sort();
+      console.log(ori_array);
+      for (i = 0; i < ori_array.length; i++) {
+        if (words_array.indexOf(ori_array[i]) == -1 && ori_array[i]) {
+          indextemp = words_array.indexOf(ori_array[i].toLowerCase());
+          words_array[indextemp] = ori_array[i];
+        }
+      }
+
+      console.log(ori_array.sort());
+      document.getElementById("words").innerHTML = words_array;
+    </script>
+  </body>
+</html>
