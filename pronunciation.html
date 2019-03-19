@@ -30,31 +30,31 @@
       var ele = document.getElementById("words");
       var ori_str = ele.textContent;
       var ori_array = ori_str.split(" ");
-      var words_array = [];
-      for (i = 0; i < ori_array.length; i++) {
-        if (ori_array[i].length > 2) {
-          if (words_array.indexOf(ori_array[i].toLowerCase()) == -1) {
-            words_array.push(ori_array[i].toLowerCase());
-          } else {
-            delete ori_array[i];
-            console.log(i);
+      let orderWords = ori_array => {
+        var wordlist = [];
+        ori_array.forEach(function(oneword) {
+          if (oneword) {
+            if (wordlist.indexOf(oneword.toLocaleLowerCase()) == -1) {
+              wordlist.push(oneword);
+            }
           }
-        } else {
-          delete ori_array[i];
-        }
-      }
-      words_array.sort();
-      ori_array.sort();
-      console.log(ori_array);
-      for (i = 0; i < ori_array.length; i++) {
-        if (words_array.indexOf(ori_array[i]) == -1 && ori_array[i]) {
-          indextemp = words_array.indexOf(ori_array[i].toLowerCase());
-          words_array[indextemp] = ori_array[i];
-        }
-      }
-
-      console.log(ori_array.sort());
-      document.getElementById("words").innerHTML = words_array;
+        });
+        wordlist.sort(function(a, b) {
+          if (a[0].toLocaleLowerCase() === b[0].toLocaleLowerCase()) {
+            return a > b ? 1 : -1;
+          } else {
+            return a.toLocaleLowerCase() > b.toLocaleLowerCase() ? 1 : -1;
+          }
+        });
+        return wordlist;
+      };
+      wordlist = orderWords(ori_array);
+      var text = "";
+      wordlist.forEach(value => document.write("<p>" + value + "</p>"));
+      // document.write(text);
+      // fetch("https://translate.google.cn/")
+      //   .then(response => console.log(response))
+      //   .then(data => console.log(data));
     </script>
   </body>
 </html>
