@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head> </head>
+
+  <body>
+    <h5 id="words">
+      Website DOCTYPE head title body versions tag element parameter content
+      Website Website Website lowercase uppercase attributes width height src -
+      source language href screen comment search hyperlink address area image
+      sound bold relative base Specifies default color size font Overrides
+      direction section blockquote clickable button section JavaScript graphics
+      table canvas column machine data delete Represent application external
+      footer frame label highlight mark measurement navigation sample client
+      drop-down resources important span strong style template multiline
+      variable container accept charset align private async asynchronously focus
+      classname visible coordinate preferences download form draggable hidden
+      label loop max method multiple validate mute abort unload blur error input
+      invalid paste history Storage resume pause wait placeholder pattern
+      readonly sandbox scope step target translate value type wrap Array Boolean
+      Date Global JSON Math Number Operators RegExp Statements String console
+      event geolocation children concat continue cookie enable count Transfer
+      detail join index protocol repeat remove return throw while switch case
+      fetch promise catch write null undefined instance background animation
+      Origin Visibility border Bottom Collapse clear cursor filter flex grow
+      flow Shrink float icon justify Orientation margin opacity order outline
+      overflow padding perspective position resize Decoration Indent Shadow
+    </h5>
+
+    <script>
+      var ele = document.getElementById("words");
+      var ori_str = ele.textContent;
+      var ori_array = ori_str.split(" ");
+      let orderWords = ori_array => {
+        var wordlist = [];
+        ori_array.forEach(function(oneword) {
+          if (oneword) {
+            if (wordlist.indexOf(oneword.toLocaleLowerCase()) == -1) {
+              wordlist.push(oneword);
+            }
+          }
+        });
+        wordlist.sort(function(a, b) {
+          if (a[0].toLocaleLowerCase() === b[0].toLocaleLowerCase()) {
+            return a > b ? 1 : -1;
+          } else {
+            return a.toLocaleLowerCase() > b.toLocaleLowerCase() ? 1 : -1;
+          }
+        });
+        return wordlist;
+      };
+      wordlist = orderWords(ori_array);
+      var text = "";
+      wordlist.forEach(value => document.write("<p>" + value + "</p>"));
+      // document.write(text);
+      // fetch("https://translate.google.cn/")
+      //   .then(response => console.log(response))
+      //   .then(data => console.log(data));
+    </script>
+  </body>
+</html>
